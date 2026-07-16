@@ -1,94 +1,91 @@
-<div class="section" id="contact">
-        <div class="cc-contact-information" style="background-image: url('assets/images/contact.jpg');">
-          <div class="container">
-            <div class="cc-contact">
-              <div class="row">
-                <div class="col-md-9">
-                  <div class="card mb-0" data-aos="zoom-in">
-                    <div class="h4 text-center title">Contact Me</div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="card-body">
-                          <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
-                            <div class="p pb-3">
-                              <strong>Feel free to contact me </strong>
-                            </div>
-                            <div class="row mb-3">
-                              <div class="col">
-                                <div class="input-group">
-                                  <span class="input-group-addon">
-                                    <i class="fa fa-user-circle"></i>
-                                  </span>
-                                  <input class="form-control" type="text" name="name" placeholder="Name"
-                                    [(ngModel)]="model.name" #name="ngModel"
-                                    [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row mb-3">
-                              <div class="col">
-                                <div class="input-group">
-                                  <span class="input-group-addon">
-                                    <i class="fa fa-file-text"></i>
-                                  </span>
-                                  <input class="form-control" type="text" name="subject" placeholder="Subject"
-                                    [(ngModel)]="model.subject" #subject="ngModel"
-                                    [ngClass]="{ 'is-invalid': f.submitted && subject.invalid }" required />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row mb-3">
-                              <div class="col">
-                                <div class="input-group">
-                                  <span class="input-group-addon">
-                                    <i class="fa fa-envelope"></i>
-                                  </span>
-                                  <input class="form-control" type="text" name="email" placeholder="E-mail"
-                                    [(ngModel)]="model.email" #email="ngModel"
-                                    [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
-                                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row mb-3">
-                              <div class="col">
-                                <div class="form-group">
-                                  <textarea class="form-control" name="message" placeholder="Your Message"
-                                    [(ngModel)]="model.message" #message="ngModel"
-                                    [ngClass]="{ 'is-invalid': f.submitted && message.invalid }" required></textarea>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col">
-                                <button class="btn btn-primary" type="submit" value="Send">Send</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="card-body">
-                          <p class="mb-0">
-                            <strong>Phone</strong>
-                          </p>
-                          <p class="pb-2">+91 7987299768</p>
-                          <p class="mb-0">
-                            <strong>Email</strong>
-                          </p>
-                          <p>somdurgeshgupta&#64;gmail.com</p>
-                          <p class="mb-0"><strong>Location</strong></p>
-                          <p>Marathahalli, Bangalore, India</p>
-                          <p class="mb-0"><strong>Availability</strong></p>
-                          <p>Immediate joiner</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+<section class="section" id="contact">
+  <div class="cc-contact-information">
+    <div class="container">
+      <div class="contact-heading" data-aos="fade-up">
+        <p>Have a project or opportunity?</p>
+        <h2 class="title">Contact Me</h2>
+        <span>Let's turn a good idea into a product people enjoy using.</span>
+      </div>
+
+      <div class="contact-card" data-aos="fade-up">
+        <div class="contact-form-panel">
+          <div class="panel-heading">
+            <span>Send a message</span>
+            <p>Fill in the form and I'll get back to you as soon as possible.</p>
+          </div>
+
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="contact-name">Your name</label>
+                <div class="input-shell" [class.has-error]="f.submitted && name.invalid">
+                  <span class="field-icon" aria-hidden="true"><i class="fa fa-user-o"></i></span>
+                  <input id="contact-name" class="form-control" type="text" name="name" placeholder="Som Durgesh"
+                    [(ngModel)]="model.name" #name="ngModel" required />
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="contact-email">Email address</label>
+                <div class="input-shell" [class.has-error]="f.submitted && email.invalid">
+                  <span class="field-icon" aria-hidden="true"><i class="fa fa-envelope-o"></i></span>
+                  <input id="contact-email" class="form-control" type="email" name="email" placeholder="you@company.com"
+                    [(ngModel)]="model.email" #email="ngModel"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required />
+                </div>
+              </div>
+
+              <div class="field-group field-full">
+                <label for="contact-subject">Subject</label>
+                <div class="input-shell" [class.has-error]="f.submitted && subject.invalid">
+                  <span class="field-icon" aria-hidden="true"><i class="fa fa-lightbulb-o"></i></span>
+                  <input id="contact-subject" class="form-control" type="text" name="subject" placeholder="What would you like to discuss?"
+                    [(ngModel)]="model.subject" #subject="ngModel" required />
+                </div>
+              </div>
+
+              <div class="field-group field-full">
+                <label for="contact-message">Message</label>
+                <div class="input-shell textarea-shell" [class.has-error]="f.submitted && message.invalid">
+                  <span class="field-icon" aria-hidden="true"><i class="fa fa-comment-o"></i></span>
+                  <textarea id="contact-message" class="form-control" name="message" placeholder="Tell me a little about your idea, team, or opportunity..."
+                    [(ngModel)]="model.message" #message="ngModel" required></textarea>
                 </div>
               </div>
             </div>
-          </div>
+
+            <div class="form-actions">
+              <p><i class="fa fa-lock" aria-hidden="true"></i> Your details stay private.</p>
+              <button class="send-button" type="submit">Send message <span>↗</span></button>
+            </div>
+          </form>
         </div>
+
+        <aside class="contact-details" aria-label="Contact details">
+          <div class="details-top">
+            <span class="status-pill"><i></i> Immediate joiner</span>
+            <h3>Open to building something meaningful.</h3>
+            <p>Whether it's a product role, freelance build, or technical collaboration, my inbox is open.</p>
+          </div>
+
+          <div class="detail-list">
+            <a href="mailto:somdurgeshgupta@gmail.com" class="detail-item">
+              <span class="detail-icon"><i class="fa fa-envelope-o"></i></span>
+              <span><small>Email</small><strong>somdurgeshgupta&#64;gmail.com</strong></span>
+            </a>
+            <a href="tel:+917987299768" class="detail-item">
+              <span class="detail-icon"><i class="fa fa-phone"></i></span>
+              <span><small>Phone</small><strong>+91 7987299768</strong></span>
+            </a>
+            <div class="detail-item">
+              <span class="detail-icon"><i class="fa fa-map-marker"></i></span>
+              <span><small>Based in</small><strong>Marathahalli, Bangalore</strong></span>
+            </div>
+          </div>
+
+          <div class="response-note"><span>Usually replies within</span><strong>24 hours</strong></div>
+        </aside>
       </div>
-      <!-- <ng-snotify class="material"></ng-snotify> -->
+    </div>
+  </div>
+</section>

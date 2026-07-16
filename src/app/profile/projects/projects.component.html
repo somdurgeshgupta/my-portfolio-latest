@@ -1,30 +1,50 @@
-<div class="section" id="projects">
-  <div class="container cc-education">
-    <div class="h4 text-center mb-4 title">Projects</div>
-
-    <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
-    <div class="row">
-
-      @for (project of projects; track project) {
-        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="blog-entry">
-            <div class="card">
-              <img class="card-img-top" src={{project.imgUrl}} onerror="this.src = 'assets/images/gif.gif'" alt="Card image" style="width:100%">
-              <div class="card-body">
-                <h4 class="card-title">{{project.title}}</h4>
-                <p class="card-text">{{project.desc}}</p>
-                <h5 class="card-text"><b>Technology :</b> {{project.tech}} </h5>
-                @if (project.mediumlink) {
-                  <h5 class="card-text"><a [href]="project.mediumlink" target="_blank" rel="noopener noreferrer">Project details</a></h5>
-                }
-                <a [href]="project.livedemo" target="_blank" rel="noopener noreferrer" class="btn btn-primary ml-2 mr-5">View live site</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      }
+<section class="section projects-section" id="projects">
+  <div class="container">
+    <div class="projects-heading" data-aos="fade-up">
+      <div>
+        <p class="section-kicker">Selected work</p>
+        <h2 class="title">Projects</h2>
+      </div>
+      <p class="projects-intro">A collection of production platforms, enterprise tools, and product experiments built across fintech, healthcare, telecom, and e-commerce.</p>
+      <span class="project-count">{{ projects.length }} projects</span>
     </div>
 
-    <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
+    <div class="projects-grid">
+      @for (project of projects; track project.id; let index = $index) {
+        <article class="project-card" [class.project-card-featured]="index < 2" data-aos="fade-up">
+          <a class="project-visual" [href]="project.livedemo" target="_blank" rel="noopener noreferrer"
+            [attr.aria-label]="'Open ' + project.title + ' live site'">
+            <img [src]="project.imgUrl" (error)="$any($event.target).src = 'assets/images/gif.gif'" [alt]="project.title + ' interface preview'" />
+            <span class="project-index">0{{ index + 1 }}</span>
+            @if (index < 2) {
+              <span class="featured-badge"><i></i> Featured build</span>
+            }
+            <span class="visual-action" aria-hidden="true">↗</span>
+          </a>
+
+          <div class="project-content">
+            <div class="project-title-row">
+              <h3>{{ project.title }}</h3>
+              <a class="title-arrow" [href]="project.livedemo" target="_blank" rel="noopener noreferrer"
+                [attr.aria-label]="'Visit ' + project.title">↗</a>
+            </div>
+            <p class="project-description">{{ project.desc }}</p>
+
+            <div class="tech-list" aria-label="Technologies used">
+              @for (technology of project.tech.split(','); track technology) {
+                <span>{{ technology.trim() }}</span>
+              }
+            </div>
+
+            <div class="project-footer">
+              <a class="project-link" [href]="project.livedemo" target="_blank" rel="noopener noreferrer">
+                View live project <span>↗</span>
+              </a>
+              <span class="project-type">{{ index < 2 ? 'Recent work' : 'Production work' }}</span>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
   </div>
-</div>
+</section>
