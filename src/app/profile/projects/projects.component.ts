@@ -11,59 +11,71 @@ export class ProjectsComponent implements OnInit {
   projects = [
     {
       id: 1,
-      title: 'Monarch',
-      desc: 'Crypto exchange platform project where I updated the Nuxt.js frontend, improved design and UI, and added user experience features.',
-      livedemo: 'https://my-portfolio-latest-six.vercel.app/',
-      githurl: 'https://github.com/somdurgeshgupta/',
-      mediumlink: 'https://my-portfolio-latest-six.vercel.app/',
-      imgUrl: 'assets/images/z1.png',
-      tech: 'Nuxt.js, Frontend Engineering, UI/UX'
+      title: 'Arc Market Application',
+      desc: 'An evidence-led market analysis workspace with instrument watchlists, interactive price charts, technical signals, decision levels, and historical outcome insights.',
+      livedemo: 'https://arc-market-application.vercel.app/',
+      mediumlink: '',
+      imgUrl: 'assets/images/arc-market.png',
+      tech: 'Angular, TypeScript, Market Analytics, Data Visualization'
     },
-
     {
       id: 2,
-      title: 'Axxya Nutritionist Pro',
-      desc: 'Built a scalable nutrition platform with country-specific diet guidance and data support for the US and Canada.',
-      livedemo: 'https://my-portfolio-latest-six.vercel.app/',
-      githurl: 'https://github.com/somdurgeshgupta/',
-      mediumlink: 'https://my-portfolio-latest-six.vercel.app/',
-      imgUrl: 'assets/images/z26.png',
-      tech: 'Node.js, MongoDB, Angular, Scalable Architecture'
+      title: 'Cerberus Ecommerce Application',
+      desc: 'A modern lifestyle e-commerce experience featuring curated collections, product discovery, account flows, and a refined responsive storefront.',
+      livedemo: 'https://project-cerberus-seven.vercel.app/',
+      mediumlink: '',
+      imgUrl: 'assets/images/cerberus-ecommerce.png',
+      tech: 'Angular, TypeScript, Responsive UI, E-commerce UX'
     },
-
-
     {
       id: 3,
-      title: 'Airtel I Deploy Dashboard',
-      desc: 'Full-stack dashboard for Airtel to track project data, resource allocation, and cost management using real-time visual insights.',
-      livedemo: 'https://my-portfolio-latest-six.vercel.app/',
-      githurl: 'https://github.com/somdurgeshgupta/',
-      mediumlink: 'https://my-portfolio-latest-six.vercel.app/',
-      imgUrl: 'assets/images/z27.png',
-      tech: 'Angular, Node.js, Dashboard Analytics, Data Visualization'
+      title: 'Franchisee Club',
+      desc: 'A fractional franchise marketplace where users can analyze opportunities and buy or sell shares in franchise businesses for as little as $10 per share.',
+      livedemo: 'https://www.franchiseeclub.com/',
+      mediumlink: '',
+      imgUrl: 'assets/images/franchisee-club.png',
+      tech: 'Angular 18/20, Node.js, MongoDB, Docker, CI/CD'
     },
-
     {
       id: 4,
-      title: 'Zeatool and Zeamed',
-      desc: 'Healthcare initiative focused on improving treatment quality and reducing operational cost through optimized service workflows.',
-      livedemo: 'https://my-portfolio-latest-six.vercel.app/',
-      githurl: 'https://github.com/somdurgeshgupta/',
-      mediumlink: 'https://my-portfolio-latest-six.vercel.app/',
-      imgUrl: 'assets/images/z23.png',
-      tech: 'Angular, Node.js, Authentication, Healthcare Workflows'
+      title: 'Nutritionist Pro by Axxya',
+      desc: 'A professional nutrition platform for food-label creation, diet analysis, recipe calculations, and menu planning, with compliance support across the USA, Canada, EU/UK, and China/Hong Kong.',
+      livedemo: 'https://nutritionistpro.com/',
+      mediumlink: '',
+      imgUrl: 'assets/images/nutritionist-pro.png',
+      tech: 'Angular, Node.js, MongoDB, Nutrition Analysis Workflows'
     },
 
 
     {
       id: 5,
-      title: 'Jewelex - Diamond Heaven',
-      desc: 'Developed and deployed a MEAN stack e-commerce application with improved backend quality, optimized services, and AWS EC2 hosting.',
+      title: 'Airtel I Deploy Dashboard',
+      desc: 'Full-stack dashboard for Airtel to track project data, resource allocation, and cost management using real-time visual insights.',
       livedemo: 'https://my-portfolio-latest-six.vercel.app/',
-      githurl: 'https://github.com/somdurgeshgupta/',
       mediumlink: 'https://my-portfolio-latest-six.vercel.app/',
-      imgUrl: 'assets/images/z4.png',
-      tech: 'MEAN Stack, Node.js, Angular, AWS EC2'
+      imgUrl: 'assets/images/airtel-ideploy.png',
+      tech: 'Angular, Node.js, Dashboard Analytics, Data Visualization'
+    },
+
+    {
+      id: 6,
+      title: 'ZeaTool by ZeaHealth',
+      desc: 'An end-to-end healthcare price-transparency platform that helps hospitals meet CMS requirements, publish machine-readable pricing, compare provider rates, and generate market insights from 3,500+ hospitals.',
+      livedemo: 'https://zeatool.com/proLanding',
+      mediumlink: '',
+      imgUrl: 'assets/images/zeatool.png',
+      tech: 'Angular, Node.js, MongoDB, REST APIs, Healthcare Data'
+    },
+
+
+    {
+      id: 7,
+      title: 'Zales Diamond Ring Builder',
+      desc: 'A custom engagement-ring e-commerce experience that lets shoppers begin with a setting or loose diamond, then match the complementary component to design their ideal ring.',
+      livedemo: 'https://diamonds.zales.com/',
+      mediumlink: '',
+      imgUrl: 'assets/images/zales-diamonds.png',
+      tech: 'Angular, Node.js, Secure E-commerce APIs, AWS EC2'
     },
 
   ]
