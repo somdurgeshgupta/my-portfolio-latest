@@ -103,7 +103,8 @@ a { color: inherit; }
 .floating-card div { display:flex;flex-direction:column; }
 .floating-card small { color:var(--muted);font-size:10px; }
 .floating-card strong { font-size:12px;color:#fff; }
-.tech-card { left:-45px;top:24%; }.location-card { right:-40px;bottom:14%; }
+.hero-info-cards { width:min(100%,500px);margin:18px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+.hero-info-cards .floating-card { position:static;min-width:0; }
 .social-rail { position:absolute;right:-28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px; }
 .social-rail a,.footer-socials a { width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.04);color:#c8d4e7;text-decoration:none;transition:.25s; }
 .social-rail a:hover,.footer-socials a:hover { border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px); }
@@ -197,13 +198,17 @@ a { color: inherit; }
   .brand-copy small { display:none; }
   .hero { padding:125px 0 75px; }.hero h1 { font-size:clamp(2.75rem,13vw,4.4rem); }
   .hero-summary { font-size:16px; }.hero-meta { gap:22px;justify-content:space-between; }.hero-meta span { font-size:10px; }
-  .portrait-frame { width:80%; }.floating-card { padding:10px; }.tech-card { left:-8px; }.location-card { right:-8px; }.social-rail { right:0; }
+  .portrait-frame { width:80%; }.floating-card { padding:10px; }.hero-info-cards { width:100%; }.social-rail { right:0; }
   .scroll-cue { display:none; }.card-body { padding:24px; }
   #experience .timeline-entry { margin-left:18px!important; }.timeline-centered::before { margin-left:17px!important; }
   #experience .timeline-icon { margin-left:-1px!important; }.timeline-label { margin-left:42px!important;padding:22px!important; }
   #experience .timeline-label h2 span { display:block;float:none;width:max-content;margin-top:10px; }
   #education .cc-education-header { min-height:170px; }
   #contact .cc-contact-information { padding:70px 0!important; }
+}
+
+@media (max-width: 480px) {
+  .hero-info-cards { grid-template-columns:1fr;max-width:330px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
