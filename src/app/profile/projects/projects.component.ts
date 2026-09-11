@@ -10,6 +10,16 @@ export class ProjectsComponent implements OnInit {
   config: any;
   projects = [
     {
+      id: 8,
+      title: 'Carrot AI',
+      desc: 'An AI assistant that combines local LLMs through Ollama with retrieval-augmented generation (RAG) to answer questions from uploaded documents. Features streaming chat, user-scoped conversation memory, and a VS Code extension for coding assistance.',
+      livedemo: '',
+      mediumlink: '',
+      imgUrl: '',
+      tech: 'Angular, NestJS, TypeScript, Ollama, LLMs, RAG, PostgreSQL',
+      kind: 'carrot'
+    },
+    {
       id: 1,
       title: 'Arc Market Application',
       desc: 'An evidence-led market analysis workspace with instrument watchlists, interactive price charts, technical signals, decision levels, and historical outcome insights.',

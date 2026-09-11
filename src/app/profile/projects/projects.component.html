@@ -5,28 +5,43 @@
         <p class="section-kicker">Selected work</p>
         <h2 class="title">Projects</h2>
       </div>
-      <p class="projects-intro">A collection of production platforms, enterprise tools, and product experiments built across fintech, healthcare, telecom, and e-commerce.</p>
+      <p class="projects-intro">A collection of AI assistants, production platforms, enterprise tools, and product experiments built across fintech, healthcare, telecom, and e-commerce.</p>
       <span class="project-count">{{ projects.length }} projects</span>
     </div>
 
     <div class="projects-grid">
       @for (project of projects; track project.id; let index = $index) {
         <article class="project-card" [class.project-card-featured]="index < 2" data-aos="fade-up">
-          <a class="project-visual" [href]="project.livedemo" target="_blank" rel="noopener noreferrer"
-            [attr.aria-label]="'Open ' + project.title + ' live site'">
+          <a class="project-visual" [attr.href]="project.livedemo || null" target="_blank" rel="noopener noreferrer"
+            [attr.aria-label]="project.livedemo ? 'Open ' + project.title + ' live site' : null">
+            @if (project.kind === 'carrot') {
+              <div class="carrot-visual" role="img" aria-label="Carrot AI: documents, retrieval, and local LLMs powered by Ollama">
+                <span class="carrot-eyebrow">LOCAL LLMS · DOCUMENT INTELLIGENCE</span>
+                <strong>Carrot<span> AI</span></strong>
+                <p>Your documents. Your context.</p>
+                <div class="carrot-pipeline" aria-hidden="true">
+                  <span>Documents</span><b>→</b><span>RAG</span><b>→</b><span>Ollama</span>
+                </div>
+              </div>
+            } @else {
             <img [src]="project.imgUrl" (error)="$any($event.target).src = 'assets/images/gif.gif'" [alt]="project.title + ' interface preview'" />
+            }
             <span class="project-index">0{{ index + 1 }}</span>
             @if (index < 2) {
               <span class="featured-badge"><i></i> Featured build</span>
             }
-            <span class="visual-action" aria-hidden="true">↗</span>
+            @if (project.livedemo) {
+              <span class="visual-action" aria-hidden="true">↗</span>
+            }
           </a>
 
           <div class="project-content">
             <div class="project-title-row">
               <h3>{{ project.title }}</h3>
-              <a class="title-arrow" [href]="project.livedemo" target="_blank" rel="noopener noreferrer"
+              @if (project.livedemo) {
+                <a class="title-arrow" [href]="project.livedemo" target="_blank" rel="noopener noreferrer"
                 [attr.aria-label]="'Visit ' + project.title">↗</a>
+              }
             </div>
             <p class="project-description">{{ project.desc }}</p>
 
@@ -37,10 +52,14 @@
             </div>
 
             <div class="project-footer">
-              <a class="project-link" [href]="project.livedemo" target="_blank" rel="noopener noreferrer">
+              @if (project.livedemo) {
+                <a class="project-link" [href]="project.livedemo" target="_blank" rel="noopener noreferrer">
                 View live project <span>↗</span>
               </a>
-              <span class="project-type">{{ index < 2 ? 'Recent work' : 'Production work' }}</span>
+              } @else {
+                <span class="project-link">Runs locally with Ollama</span>
+              }
+              <span class="project-type">{{ project.kind === 'carrot' ? 'AI assistant' : index < 2 ? 'Recent work' : 'Production work' }}</span>
             </div>
           </div>
         </article>

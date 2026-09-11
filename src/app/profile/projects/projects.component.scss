@@ -103,6 +103,26 @@
   height: 310px;
 }
 
+.carrot-visual {
+  height: 100%;
+  padding: 48px 24px 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(ellipse at 80% 10%, rgba(249, 115, 22, .22), transparent 60%), #101e2c;
+  color: #f5f8ff;
+}
+
+.carrot-eyebrow { color: #fdba74; font-size: 9px; letter-spacing: .12em; }
+.carrot-visual strong { margin-top: 8px; font: 800 clamp(32px, 4vw, 52px)/1.2 'Manrope', sans-serif; }
+.carrot-visual strong span { color: #fb923c; }
+.carrot-visual p { margin: 8px 0 18px; color: #c0ccdc; font-size: 13px; }
+.carrot-pipeline { display: flex; align-items: center; gap: 10px; }
+.carrot-pipeline span { padding: 8px 10px; border: 1px solid rgba(251, 146, 60, .3); border-radius: 8px; font-size: 11px; }
+.carrot-pipeline b { color: #5eead4; font-weight: 400; }
+
 .project-visual::after {
   content: '';
   position: absolute;
