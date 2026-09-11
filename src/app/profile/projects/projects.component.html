@@ -12,8 +12,7 @@
     <div class="projects-grid">
       @for (project of projects; track project.id; let index = $index) {
         <article class="project-card" [class.project-card-featured]="index < 2" data-aos="fade-up">
-          <a class="project-visual" [attr.href]="project.livedemo || null" target="_blank" rel="noopener noreferrer"
-            [attr.aria-label]="project.livedemo ? 'Open ' + project.title + ' live site' : null">
+          <ng-template #projectVisual>
             @if (project.kind === 'carrot') {
               <div class="carrot-visual" role="img" aria-label="Carrot AI: documents, retrieval, and local LLMs powered by Ollama">
                 <span class="carrot-eyebrow">LOCAL LLMS · DOCUMENT INTELLIGENCE</span>
@@ -30,14 +29,30 @@
             @if (index < 2) {
               <span class="featured-badge"><i></i> Featured build</span>
             }
-            @if (project.livedemo) {
+            @if (project.livedemo || project.kind === 'carrot') {
               <span class="visual-action" aria-hidden="true">↗</span>
             }
-          </a>
+          </ng-template>
+          @if (project.kind === 'carrot') {
+            <a class="project-visual" routerLink="/projects/carrot-ai" aria-label="Read Carrot AI project documentation">
+              <ng-container *ngTemplateOutlet="projectVisual"></ng-container>
+            </a>
+          } @else {
+            <a class="project-visual" [href]="project.livedemo" target="_blank" rel="noopener noreferrer"
+              [attr.aria-label]="'Open ' + project.title + ' live site'">
+              <ng-container *ngTemplateOutlet="projectVisual"></ng-container>
+            </a>
+          }
 
           <div class="project-content">
             <div class="project-title-row">
-              <h3>{{ project.title }}</h3>
+              <h3>
+                @if (project.kind === 'carrot') {
+                  <a class="docs-title" routerLink="/projects/carrot-ai">{{ project.title }}</a>
+                } @else {
+                  {{ project.title }}
+                }
+              </h3>
               @if (project.livedemo) {
                 <a class="title-arrow" [href]="project.livedemo" target="_blank" rel="noopener noreferrer"
                 [attr.aria-label]="'Visit ' + project.title">↗</a>
@@ -56,8 +71,8 @@
                 <a class="project-link" [href]="project.livedemo" target="_blank" rel="noopener noreferrer">
                 View live project <span>↗</span>
               </a>
-              } @else {
-                <span class="project-link">Runs locally with Ollama</span>
+              } @else if (project.kind === 'carrot') {
+                <a class="project-link docs-link" routerLink="/projects/carrot-ai">Explore the build <span>→</span></a>
               }
               <span class="project-type">{{ project.kind === 'carrot' ? 'AI assistant' : index < 2 ? 'Recent work' : 'Production work' }}</span>
             </div>

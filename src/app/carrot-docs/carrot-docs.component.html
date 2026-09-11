@@ -1,0 +1,65 @@
+<a class="skip-link" href="#documentation">Skip to documentation</a>
+<header class="docs-header">
+  <a routerLink="/" fragment="projects" class="back-link">← Back to projects</a>
+  <a class="wordmark" routerLink="/projects/carrot-ai">Carrot<span> AI</span> <small>BUILD NOTES</small></a>
+</header>
+
+<main class="docs-shell">
+  <section class="docs-hero" aria-labelledby="carrot-title">
+    <p class="eyebrow">PROJECT DOCUMENTATION / AI & DEVELOPER TOOLS</p>
+    <h1 id="carrot-title">Inside <span>Carrot AI.</span></h1>
+    <p class="hero-copy">How I built an AI assistant that connects local language models, document knowledge, and the VS Code workspace.</p>
+    <div class="hero-tags">@for (technology of stack; track technology) { <span>{{ technology }}</span> }</div>
+    <div class="hero-facts">
+      <div><strong>01 shared backend</strong><span>Web app + VS Code extension</span></div>
+      <div><strong>Local-first inference</strong><span>Ollama with optional cloud providers</span></div>
+      <div><strong>Context-aware assistance</strong><span>Documents, conversations, and code</span></div>
+    </div>
+  </section>
+
+  <div class="docs-layout">
+    <aside class="contents">
+      <nav aria-label="Documentation contents">
+        <p>ON THIS PAGE</p>
+        @for (section of sections; track section.id; let index = $index) {
+          <a routerLink="/projects/carrot-ai" [fragment]="section.id"><span>{{ (index + 1).toString().padStart(2, '0') }}</span>{{ section.title }}</a>
+        }
+      </nav>
+      <div class="contents-note">A walkthrough of the implementation, with source-file references for each topic.</div>
+    </aside>
+
+    <article id="documentation" class="documentation">
+      @for (section of sections; track section.id; let index = $index) {
+        <section [id]="section.id" class="doc-section" [attr.aria-labelledby]="section.id + '-title'">
+          <p class="section-number">{{ (index + 1).toString().padStart(2, '0') }} / THE BUILD</p>
+          <h2 [id]="section.id + '-title'">{{ section.title }}</h2>
+          <p class="section-intro">{{ section.intro }}</p>
+
+          @if (section.id === 'architecture') {
+            <figure class="architecture">
+              <div class="diagram-clients"><div>Angular web app<small>Chat & knowledge UI</small></div><div>VS Code extension<small>Sidebar & workspace tools</small></div></div>
+              <p class="connector">↓ Authenticated API requests · streamed responses ↑</p>
+              <div class="diagram-api">NestJS API<small>Authentication · Models · Chat · Sessions · RAG</small></div>
+              <p class="connector">↓ Inference, persistence & background work</p>
+              <div class="diagram-services"><div>Ollama / cloud<small>Model inference</small></div><div>PostgreSQL<small>Data + pgvector</small></div><div>Redis / BullMQ<small>Cache + ingestion</small></div></div>
+              <figcaption>Workspace tools execute in the VS Code extension host. The backend coordinates model requests and application data.</figcaption>
+            </figure>
+          }
+
+          @if (section.id === 'structure') { <pre class="file-tree" aria-label="Carrot AI repository structure"><code>{{ structure }}</code></pre> }
+
+          <div class="section-points">
+            @for (point of section.points; track point.title) {
+              <div class="doc-point"><h3>{{ point.title }}</h3><p>{{ point.text }}</p></div>
+            }
+          </div>
+
+          <details class="source-files"><summary>Source map <span>{{ section.files.length }} references</span></summary>
+            <ul>@for (file of section.files; track file) { <li><code>{{ file }}</code></li> }</ul>
+          </details>
+        </section>
+      }
+      <footer class="docs-footer"><p>Carrot AI · Project architecture & implementation notes</p><a routerLink="/" fragment="projects">← Explore more projects</a></footer>
+    </article>
+  </div>
+</main>
